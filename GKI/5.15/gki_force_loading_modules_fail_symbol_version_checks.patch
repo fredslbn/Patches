@@ -24,7 +24,7 @@ diff --git a/kernel/module.c b/kernel/module.c
 index 6a6c9bbb4862..a8b24fa78ca0 100644
 --- a/kernel/module.c
 +++ b/kernel/module.c
-@@ -1352,9 +1352,9 @@ static int check_version(const struct load_info *info,
+@@ -1287,9 +1287,9 @@ static int check_version(const struct load_info *info,
  	return 1;
  
  bad_version:
