@@ -29,7 +29,7 @@ diff --git a/scripts/setlocalversion b/scripts/setlocalversion
 index e80fd64535d1c..9887095a237bb 100755
 --- a/scripts/setlocalversion
 +++ b/scripts/setlocalversion
-@@ -82,7 +82,6 @@ scm_version()
+@@ -77,7 +77,6 @@ scm_version()
  			# If only the short version is requested, don't bother
  			# running further git commands
  			if $short; then
@@ -37,7 +37,7 @@ index e80fd64535d1c..9887095a237bb 100755
  				return
  			fi
  			# If we are past a tagged commit (like
-@@ -111,7 +110,7 @@ scm_version()
+@@ -117,7 +116,7 @@ scm_version()
  			git --no-optional-locks status -uno --porcelain 2>/dev/null ||
  			git diff-index --name-only HEAD
  		} | read dummy; then
@@ -46,14 +46,14 @@ index e80fd64535d1c..9887095a237bb 100755
  		fi
  	fi
  }
-@@ -170,7 +169,6 @@ elif [ "${LOCALVERSION+set}" != "set" ]; then
- 	# If the variable LOCALVERSION is set (including being set
- 	# to an empty string), we don't want to append a plus sign.
- 	scm=$(scm_version --short)
+@@ -210,7 +209,6 @@ elif [ "${LOCALVERSION+set}" != "set" ]; then
+ 	# LOCALVERSION= is not specified
+	if test "${LOCALVERSION+set}" != "set"; then
+		scm=$(scm_version --short)
 -	res="$res${scm:++}"
+  fi
  fi
  
- # finally, add the abXXX number if BUILD_NUMBER is set
 -- 
 2.49.0
 
