@@ -46,7 +46,7 @@ index e80fd64535d1c..9887095a237bb 100755
  		fi
  	fi
  }
-@@ -210,7 +209,6 @@ elif [ "${LOCALVERSION+set}" != "set" ]; then
+@@ -210,7 +209,6 @@ if test "$CONFIG_LOCALVERSION_AUTO" = "y"; then
  	# LOCALVERSION= is not specified
 	if test "${LOCALVERSION+set}" != "set"; then
 		scm=$(scm_version --short)
