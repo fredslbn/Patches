@@ -11,7 +11,7 @@ diff --git a/scripts/mkcompile_h b/scripts/mkcompile_h
 index 6a2a04d92f42f..814e7b0ab4a3b 100755
 --- a/scripts/mkcompile_h
 +++ b/scripts/mkcompile_h
-@@ -38,6 +38,9 @@ else
+@@ -40,6 +40,9 @@ else
  	LINUX_COMPILE_HOST=$KBUILD_BUILD_HOST
  fi
  
