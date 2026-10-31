@@ -511,10 +511,10 @@ index 3e3542b..40c741a 100644
  
  static int two = 2;
  static int four = 4;
-@@ -49,10 +52,125 @@ static int ip_ping_group_range_max[] = { GID_T_MAX, GID_T_MAX };
- static int comp_sack_nr_max = 255;
- static u32 u32_max_div_HZ = UINT_MAX / HZ;
+@@ -51,10 +54,125 @@ static int ip_ping_group_range_max[] = { GID_T_MAX, GID_T_MAX };
  static int one_day_secs = 24 * 3600;
+ 
+ static int tcp_min_rcvbuf = 4096;
 +static u8 tcp_plb_max_rounds = 31;
 +static int tcp_plb_max_cong_thresh = 256;
  
