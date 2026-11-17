@@ -1,0 +1,37 @@
+From 3a8aef4ad5b7be11682dd4d04e105c1222da8e09 Mon Sep 17 00:00:00 2001
+From: Pzqqt <821026875@qq.com>
+Date: Mon, 3 Jul 2023 13:02:46 +0800
+Subject: [PATCH] kernel: module: Force loading of modules that fail symbol
+ version checks
+
+- Some kernel changes may break kmi, at which point the kernel will
+  refuse to load some vendor modules.
+- But certain modules are critical for device startup. If they are
+  not successfully loaded, not only can't boot, even can't enter
+  recovery mode (because the same kernel is used to start Android
+  and start recovery). At this time, user can only flash the stock
+  boot image through fastboot. This is very inconvenient for users.
+- Therefore, we force the loading of modules that fail the symbol
+  version check to ensure that Android / Recovery can start normally.
+  But also keep the warning to remind the developer to fix it.
+
+Signed-off-by: Pzqqt <821026875@qq.com>
+---
+ kernel/module/version.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/kernel/module/version.c b/kernel/module/version.c
+index 53f43ac5a73e9..7f1c2dc1d1490 100644
+--- a/kernel/module/version.c
++++ b/kernel/module/version.c
+@@ -51,8 +51,8 @@ int check_version(const struct load_info *info,
+ 	return 1;
+ 
+ bad_version:
+-	pr_warn("%s: disagrees about version of symbol %s\n", info->name, symname);
+-	return 0;
++	pr_warn("%s: disagrees about version of symbol %s, but ignore...\n", info->name, symname);
++	return 1;
+ }
+ 
+ int check_modstruct_version(const struct load_info *info,
